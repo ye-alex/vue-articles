@@ -44,7 +44,7 @@ window.LATEST_ARTICLES = [
 
 <template>
   <div class="content-wrapper">
-    <header><h2>Latest Updates</h2></header>
+    <header class="list-title"><h2>Latest Updates</h2></header>
     <main>
       <ListComponent />
     </main>
@@ -53,10 +53,10 @@ window.LATEST_ARTICLES = [
 
 <style scoped lang="css">
 .content-wrapper {
-  margin: 2rem;
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  align-items: center;
+  padding: 24px;
+}
+
+.list-title {
+  text-align: center;
 }
 </style>

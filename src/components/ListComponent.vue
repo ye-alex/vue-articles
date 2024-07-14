@@ -41,8 +41,8 @@ const filteredEntries = computed(() => {
 </script>
 
 <template>
-  <div class="latest-updates">
-    <div class="filters">
+  <div class="list-wrapper">
+    <div class="list-filter">
       <label><input type="checkbox" v-model="filters.news" />News</label>
       <label><input type="checkbox" v-model="filters.essay" />Essays</label>
     </div>
@@ -50,8 +50,8 @@ const filteredEntries = computed(() => {
       <li v-if="!filteredEntries.length" class="list-item">No Articles</li>
       <li v-for="entry in filteredEntries" :key="entry.url">
         <a :href="entry.url" :title="entry.title" target="_blank" rel="noopener noreferrer">
-          <span class="list-title">{{ entry.title }}</span>
-          <span>{{ formattedDate(entry.publishDate) }}</span>
+          <p class="list-title">{{ entry.title }}</p>
+          <p class="list-date">{{ formattedDate(entry.publishDate) }}</p>
         </a>
       </li>
     </ul>
@@ -59,47 +59,56 @@ const filteredEntries = computed(() => {
 </template>
 
 <style scoped lang="css">
-.list-item {
-  font-weight: 600;
-  padding-top: 2rem;
+.list-filter {
   text-align: center;
+  font-size: 18px;
 }
 
-.filters {
-  display: flex;
-  justify-content: center;
+.list-filter label:first-child {
+  margin-right: 16px;
 }
 
-.filters label:first-child {
-  margin-right: 1rem;
-}
-
-.latest-updates {
-  min-height: 200px;
-  min-width: 320px;
+.list-wrapper {
   border: 1px solid black;
-  border-radius: 1rem;
-  padding: 1rem;
+  border-radius: 16px;
+  padding: 16px;
 }
 
-.latest-updates ul {
-  list-style-type: none;
-  padding: 0;
+.list-wrapper p {
+  margin: 0;
 }
 
-.latest-updates li:not(:last-child) {
-  padding-bottom: 0.5rem;
-}
-
-.latest-updates a {
+.list-wrapper a {
   display: flex;
   justify-content: space-between;
 }
 
+.list-item {
+  font-weight: 600;
+  text-align: center;
+}
+
+.list-wrapper ul {
+  list-style-type: none;
+  padding: 0;
+  margin-bottom: 0;
+}
+
 .list-title {
-  width: 85%;
+  width: 80%;
   overflow: hidden;
   text-wrap: nowrap;
   text-overflow: ellipsis;
+}
+
+.list-date {
+  text-wrap: nowrap;
+}
+
+/* fill a title on movile devices */
+@media (min-width: 280px) and (max-width: 480px) {
+  .list-title {
+    width: 67%;
+  }
 }
 </style>

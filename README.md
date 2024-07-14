@@ -1,6 +1,6 @@
-# vue-list
+# Prerequisite
 
-This template should help get you started developing with Vue 3 in Vite.
+This project uses LTS Node.js v20.15.1 specified in the .nvmrc file. You can run nvm use (the version will be read from .nvmrc) or nvm use 20.15.1 If you need to install nvm, check out [Install NVM](https://www.linode.com/docs/guides/how-to-install-use-node-version-manager-nvm/)
 
 ## Recommended IDE Setup
 
@@ -26,11 +26,20 @@ npm install
 npm run dev
 ```
 
+The page will reload if you make edits.
+You will also see any lint errors in the console.
+
 ### Type-Check, Compile and Minify for Production
 
 ```sh
 npm run build
 ```
+
+Builds the app for production to the dist folder.
+It correctly bundles Vue in production mode and optimizes the build for the best performance.
+
+The build is minified and the filenames include the hashes.
+Your app is ready to be deployed!
 
 ### Run Unit Tests with [Vitest](https://vitest.dev/)
 
@@ -38,8 +47,13 @@ npm run build
 npm run test:unit
 ```
 
+Launches the test runner.
+See the section about [running](https://vuejs.org/guide/scaling-up/testing) tests for more information.
+
 ### Lint with [ESLint](https://eslint.org/)
 
 ```sh
 npm run lint
 ```
+
+Launches the linter. See the section about [running linter](https://eslint.vuejs.org/user-guide) for more information.
