@@ -1,25 +1,10 @@
 <script setup lang="ts">
 import { Category, type IArticle } from '@/types/list'
 import { computed, ref } from 'vue'
+import { formattedDate, isRecentDate } from './helper'
 
 const entries = ref<IArticle[]>(window.LATEST_ARTICLES)
 const filters = ref({ news: true, essay: true })
-
-const formattedDate = (dateStr: string): string => {
-  const date = new Date(dateStr)
-  const options: Intl.DateTimeFormatOptions = { month: 'long', day: '2-digit' }
-
-  return date.toLocaleDateString('en-US', options)
-}
-
-const isRecentDate = (dateStr: string): boolean => {
-  const date = new Date(dateStr)
-  const currentDate = new Date()
-  const differenceInTime = currentDate.getTime() - date.getTime()
-  const differenceInDays = differenceInTime / (1000 * 3600 * 24)
-
-  return differenceInDays <= 7
-}
 
 const filteredEntries = computed(() => {
   return entries.value
@@ -43,8 +28,8 @@ const filteredEntries = computed(() => {
 <template>
   <div class="list-wrapper">
     <div class="list-filter">
-      <label><input type="checkbox" v-model="filters.news" />News</label>
-      <label><input type="checkbox" v-model="filters.essay" />Essays</label>
+      <label><input type="checkbox" v-model="filters.news" id="news" />News</label>
+      <label><input type="checkbox" v-model="filters.essay" id="essays" />Essays</label>
     </div>
     <ul>
       <li v-if="!filteredEntries.length" class="list-item">No Articles</li>
